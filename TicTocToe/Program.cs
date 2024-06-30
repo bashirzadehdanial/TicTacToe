@@ -51,5 +51,24 @@ namespace TicTacToe
             Console.WriteLine("       |       |       ");
 
         }
+        static void PlayerMove(int player)
+        {
+            int choice;
+            char mark = (player % 2 == 0) ? 'O' : 'X';
+
+            while (true)
+            {
+                Console.WriteLine("Player {0}'s turn. Enter your move (1-9): ", (player % 2) + 1);
+                if (int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= 9 && IsMoveValid(choice))
+                {
+                    PlaceMove(choice, mark);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid move. Try again.");
+                }
+            }
+        }
     }
 }
